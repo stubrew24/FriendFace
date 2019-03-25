@@ -6,6 +6,7 @@ class User{
         this.tagline = user.tagline;
         this.location = user.location; 
         this.email = user.email
+<<<<<<< HEAD
         this.fullName = this.f_name + " " + this.l_name
     }
 
@@ -32,5 +33,8 @@ class User{
      }
 
 
+=======
+    }
+>>>>>>> user-model
 }
 
