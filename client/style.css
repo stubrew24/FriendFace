@@ -31,3 +31,7 @@ nav{
     position: sticky;
     top: 2em;
 }
+
+.dbl-btn{
+    height: 4em;
+}
