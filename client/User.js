@@ -41,3 +41,4 @@ let kian = {
     email: "kian.edalat@flatironschool.co.uk",}
 
     const u1 = new User(kian)
+    u1.create()
