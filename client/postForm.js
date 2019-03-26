@@ -9,16 +9,17 @@ class PostForm {
     }
 
     static handleCreate(event) {
+        debugger
         event.preventDefault()
 
         const comment = this.el.comment.value
-        const userId = this.el.userId.value
+            //const userId = this.el.userId.value
 
-        const post = { comment: comment, user_id: userId }
+        //const post = { comment: comment, user_id: userId }
 
         //API
-        API.createPost(post)
-            .then(newPost => TimeLine.addPost(newPost))
+        // API.createPost(post)
+        //   .then(newPost => TimeLine.addPost(newPost))
     }
 }
 
