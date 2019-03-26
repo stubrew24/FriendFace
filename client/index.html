@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-3" id="sidebar">
                 
-                <div class="card" style="width: 255px; display:none;"  id="profile"   >
+                <!-- <div class="card" style="width: 255px; display:none;"  id="profile"   >
                     <img src="images/placeholder.jpg" class="card-img-top">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="name">Stuart Sewell</h4>
@@ -29,26 +29,60 @@
                             <a href="#" id="user-posts" class="btn btn-outline-dark">View Posts</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="card" style="width: 255px"  id="signin">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="name">Sign In</h4>
-                        <form id="signin">
+                        <form id="signinform">
                                 <div class="row form-group">
                                     <div class="col-sm-12" style="margin-bottom: 1em;">
                                         <input type="email"  class="form-control" name="email" placeholder="Email" required>
+                                        <span id="status"></span>
                                     </div>
                                     <div class="col-sm-12" style="margin-bottom: 1em;">
-                                        <input type="password"  class="form-control" name="email" placeholder="Password">
+                                        <input type="password"  class="form-control" name="password" placeholder="Password">
                                     </div>
                                     <div class="col-sm-8 offset-sm-2">
                                         <input type="submit" name="submit" value="Sign In" class="btn btn-primary btn-block">
                                     </div>
                                 </div>
                         </form>
+                        <div class="text-center">
+                            <a href="#" id="createAccount">Create Account</a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="card" style="width: 255px; display:none;"  id="signup">
+                        <div class="card-body">
+                            <h4 class="card-title text-center" id="name">Create Account</h4>
+                            <form id="signupform">
+                                <div class="row form-group">
+                                    <div class="col-sm-12" style="margin-bottom: 1em;">
+                                        <input type="email"  class="form-control" name="email" placeholder="Email" required >
+                                        <span id="status"></span>
+                                    </div>
+                                    <div class="col-sm-12" style="margin-bottom: 1em;">
+                                        <input type="text"  class="form-control" name="f_name" placeholder="First name" required >
+                                    </div>
+                                    <div class="col-sm-12" style="margin-bottom: 1em;">
+                                        <input type="text"  class="form-control" name="l_name" placeholder="Last name"required >
+                                    </div>
+                                    <div class="col-sm-12" style="margin-bottom: 1em;">
+                                        <input type="text"  class="form-control" name="location" placeholder="Location" required >
+                                    </div>
+                                    <div class="col-sm-12" style="margin-bottom: 1em;">
+                                            <input type="text"  class="form-control" name="tagline" placeholder="Tagline">
+                                        </div>
+                                    <div class="col-sm-8 offset-sm-2">
+                                        <input type="submit" name="submit" value="Sign In" class="btn btn-primary btn-block">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                
 
             </div>
 
@@ -76,15 +110,54 @@
     </div>
 
     <script>
-        const signInForm = document.getElementById('signin');
+        const signinBox = document.getElementById('signin');
+        const signInForm = document.getElementById('signinform');
         const profile = document.getElementById('profile');
+        const createBtn = document.getElementById('createAccount');
+        const createBox = document.getElementById('signup');
+        const signupForm = document.getElementById('signupform');
+
+        createBtn.addEventListener('click', e=> {
+            e.preventDefault();
+            signinBox.style.display = "none";
+            createBox.style.display = "block";
+        })
+
+        signupForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const f_name = signupForm.f_name.value;
+            const l_name = signupForm.l_name.value;
+            const email = signupForm.email.value;
+            const location = signupForm.location.value;
+            const tagline = signupForm.tagline.value;
+
+            newUser = {f_name, l_name, email, location, tagline};
+
+            API.createUser(newUser)
+                .then(user => login(user.email));
+
+        })
+
         signInForm.addEventListener('submit', e => {
             e.preventDefault();
-            console.log('howdy');
-            signInForm.style.display = "none";
-            profile.style.display = "block";
+            const emailAdd = signInForm.email.value
+            login(emailAdd);
+            
         });
         
+        const login = (email) => {
+            API.loginUser(email).then(
+                newUser => {
+                    if (newUser.error) {
+                        const error = document.getElementById('status')
+                        error.innerText = "Email not found."
+                        error.style.color = "Red";
+                    } else {
+                       signInForm.style.display = "none"
+                        new User(newUser)
+                    }
+                });
+        }
     </script>
 
     <script src="API.js"></script>

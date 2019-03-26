@@ -7,6 +7,7 @@ class User{
         this.location = user.location; 
         this.email = user.email
         this.fullName = this.f_name + " " + this.l_name
+        this.create()
     }
 
      create(){
@@ -32,12 +33,10 @@ class User{
      }
 }
 
-let kian = {
-    f_name: "Kian", 
-    l_name: "Edalat", 
-    image: "nothing", 
-    tagline: "Many wives, happy life", 
-    location: "London", 
-    email: "kian.edalat@flatironschool.co.uk",}
-
-    const u1 = new User(kian)
+// let kian = {
+//     f_name: "Kian", 
+//     l_name: "Edalat", 
+//     image: "images/placeholder.jpg", 
+//     tagline: "Many wives, happy life", 
+//     location: "London", 
+//     email: "kian.edalat@flatironschool.co.uk",}
