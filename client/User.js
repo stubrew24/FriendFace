@@ -6,7 +6,6 @@ class User{
         this.tagline = user.tagline;
         this.location = user.location; 
         this.email = user.email
-<<<<<<< HEAD
         this.fullName = this.f_name + " " + this.l_name
     }
 
@@ -21,20 +20,24 @@ class User{
             <p class="card-text" id="location">${this.location}</p>
             
             <div class="col text-center">
-                <a href="#" class="btn btn-outline-dark"">View Posts</a>
+                <a href="#" id="user-posts" class="btn btn-outline-dark"">View Posts</a>
             </div>
         </div>
     </div>`
-    sideBar.querySelector(".btn").addEventListener("click", ()=> this.showPosts())
+    sideBar.querySelector("#user-posts").addEventListener("click", ()=> this.showPosts())
      }
 
      showPosts(){
           //TimeLine.addPosts()  
      }
-
-
-=======
-    }
->>>>>>> user-model
 }
 
+let kian = {
+    f_name: "Kian", 
+    l_name: "Edalat", 
+    image: "nothing", 
+    tagline: "Many wives, happy life", 
+    location: "London", 
+    email: "kian.edalat@flatironschool.co.uk",}
+
+    const u1 = new User(kian)
