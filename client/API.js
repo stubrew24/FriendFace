@@ -13,6 +13,15 @@ class API {
             .then(resp => resp.json())
     }
 
+    // USER LOGIN
+    static loginUser(email) {
+        return fetch(this.baseUrl + '/login', {
+            method: "POST",
+            headers: {"Content-type":"application/json"},
+            body: JSON.stringify({email: email})
+        }).then(resp => resp.json());
+    }
+
     //GET ALL USERS
     static getUsers() {
         return fetch(this.usersUrl)

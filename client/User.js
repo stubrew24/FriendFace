@@ -7,9 +7,13 @@ class User {
         this.tagline = user.tagline;
         this.location = user.location;
         this.email = user.email
-        this.fullName = this.f_name + " " + this.l_name
+        this.fullName = this.f_name + " " + this.l_name <<
+            << << < HEAD
 
-        document.cookie = `userId=${this.id}`;
+        document.cookie = `userId=${this.id}`; ===
+        === =
+        this.create() >>>
+            >>> > 33992 baaf47e6b134c89a0ac61ec57bcf8a8da22
     }
 
     create() {
