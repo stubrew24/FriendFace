@@ -1,15 +1,18 @@
-class User{
-    constructor(user){
-        this.f_name = user.f_name; 
-        this.l_name = user.l_name; 
-        this.image = user.image; 
+class User {
+    constructor(user) {
+        this.id = user.id
+        this.f_name = user.f_name;
+        this.l_name = user.l_name;
+        this.image = user.image;
         this.tagline = user.tagline;
-        this.location = user.location; 
+        this.location = user.location;
         this.email = user.email
         this.fullName = this.f_name + " " + this.l_name
+
+        document.cookie = `userId=${this.id}`;
     }
 
-     create(){
+    create() {
         const sideBar = document.querySelector("#sidebar")
         sideBar.innerHTML = `
         <div class="card" style="width: 255px"  id="profile">
@@ -24,20 +27,10 @@ class User{
             </div>
         </div>
     </div>`
-    sideBar.querySelector("#user-posts").addEventListener("click", ()=> this.showPosts())
-     }
+        sideBar.querySelector("#user-posts").addEventListener("click", () => this.showPosts())
+    }
 
-     showPosts(){
-          //TimeLine.addPosts()  
-     }
+    showPosts() {
+        //TimeLine.addPosts()  
+    }
 }
-
-let kian = {
-    f_name: "Kian", 
-    l_name: "Edalat", 
-    image: "nothing", 
-    tagline: "Many wives, happy life", 
-    location: "London", 
-    email: "kian.edalat@flatironschool.co.uk",}
-
-    const u1 = new User(kian)
