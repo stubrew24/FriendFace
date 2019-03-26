@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-sm-3" id="sidebar">
 
-                <div class="card" style="width: 255px" id="profile">
+                <div class="card" style="width: 255px; display:none;" id="profile">
                     <img src="images/placeholder.jpg" class="card-img-top">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="name">Stuart Sewell</h4>
@@ -40,6 +40,25 @@
                         <div class="col text-center">
                             <a href="#" id="user-posts" class="btn btn-outline-dark">View Posts</a>
                         </div>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 255px" id="signin">
+                    <div class="card-body">
+                        <h4 class="card-title text-center" id="name">Sign In</h4>
+                        <form id="signin">
+                            <div class="row form-group">
+                                <div class="col-sm-12" style="margin-bottom: 1em;">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="col-sm-12" style="margin-bottom: 1em;">
+                                    <input type="password" class="form-control" name="email" placeholder="Password">
+                                </div>
+                                <div class="col-sm-8 offset-sm-2">
+                                    <input type="submit" name="submit" value="Sign In" class="btn btn-primary btn-block">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -56,7 +75,7 @@
                             </div>
 
                             <div class="col-sm-2">
-                                <button type="submit" class="btn btn-primary dbl-btn btn-block">Post</button>
+                                <button type="submit" class="btn btn-primary btn-block">Post</button>
                             </div>
                         </div>
                     </form>
@@ -68,12 +87,22 @@
         </div>
     </div>
 
+    <script>
+        const signInForm = document.getElementById('signin');
+        const profile = document.getElementById('profile');
+        signInForm.addEventListener('submit', e => {
+            e.preventDefault();
+            console.log('howdy');
+            signInForm.style.display = "none";
+            profile.style.display = "block";
+        });
+    </script>
+
     <script src="API.js"></script>
     <script src="timeline.js"></script>
     <script src="post.js"></script>
     <script src="postForm.js"></script>
 
-    <script src="index.js"></script>
 </body>
 
 </html>
