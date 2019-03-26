@@ -7,8 +7,16 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
-        # binding.pry 
         render json: @user
+    end
+
+    def login
+        @user = User.find_by(email: params[:email])
+        if @user
+            render json: @user
+        else
+            render json: {error: "User not found."}, status: 400
+        end
     end
 
     def create
@@ -16,7 +24,8 @@ class UsersController < ApplicationController
         if @user.save
             render json: @user
         else
-            render json: {error: "User not saved."}, status: 400
+            # binding.pry
+            render json: @user.errors.full_messages, status: 400
         end
     end
 

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show, :create]
 
   post '/like', to: 'posts#add_like'
+  post '/login', to: 'users#login'
 
 end
