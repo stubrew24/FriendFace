@@ -36,10 +36,11 @@
             <div class="col-sm-9">
 
                 <div id="postform">
-                    <form>
+                    <form id="post-form">
                         <div class="row form-group">
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="post-content" placeholder="New Post"></textarea>
+                                <input type="text" class="form-control" id="post-content" name="comment" placeholder="New Post">
+                                <input type="hidden" name="userId" value="1">
                             </div>
 
                             <div class="col-sm-2">
@@ -49,17 +50,17 @@
                     </form>
                 </div>
 
-                <div class=" list-group" style="width: 100%;"  id="timeline">
-                    <div class="card-body list-group-item">
-                        <img src="images/placeholder.jpg" height="50" class="profile-img"><br><br>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Posted 3 mins ago</small></p>
-                    </div>                 
+                <div class=" list-group" style="width: 100%;"  id="timeline">               
                 </div>
             </div>
         </div>
     </div>
 
-
+    <script src="API.js"></script>
+    <script src="timeline.js"></script>
+    <script src="post.js"></script>  
+    <script src="postForm.js"></script>
+ 
+    <script src="index.js"></script>
 </body>
 </html>
