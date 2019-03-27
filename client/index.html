@@ -139,7 +139,7 @@
         }
         
         if (document.cookie) {
-            signinBox.remove();
+            signinBox.remove()
             userEmail = document.cookie.split('=')[1];
             login(userEmail);
         } else {
