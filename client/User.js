@@ -38,8 +38,4 @@ class User {
             location.reload();
         });
     }
-
-    showPosts() {
-        //TimeLine.addPosts()  
-    }
 }

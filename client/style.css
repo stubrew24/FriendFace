@@ -44,8 +44,9 @@ nav{
     top: 2em;
 }
 
-input[type=text]{
-    background-color: #141d26!important
+input[type=text],input[type=email],input[type=password]{
+    background-color: #141d26!important;
+    color: #fff!important;
 }
 
 .card, .card-body, input, .btn{
