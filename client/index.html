@@ -23,6 +23,7 @@
 <body>
 
     <div class="container">
+
         <nav class="navbar navbar-expand-lg navbar-light bg-blue">
             <a class="navbar-brand" href="#">FriendFace</a>
         </nav>
@@ -30,7 +31,7 @@
         <div class="row">
             <div class="col-sm-3" id="sidebar">
 
-                <div class="card" style="width: 255px" id="signin">
+                <div class="card" style="width: 255px; display: none;" id="signin">
                     <div class="card-body">
                         <h4 class="card-title text-center" id="name">Sign In</h4>
                         <form id="signinform">
@@ -113,6 +114,8 @@
     </div>
 
     <script>
+
+
         const signinBox = document.getElementById('signin');
         const signInForm = document.getElementById('signinform');
 
@@ -121,6 +124,28 @@
 
         const signupBox = document.getElementById('signup');
         const signupForm = document.getElementById('signupform');
+        
+        const login = (email) => {
+            API.loginUser(email).then(
+                newUser => {
+                    if (newUser.error) {
+                        const error = document.getElementById('status')
+                        error.innerText = "Email not found."
+                        error.style.color = "Red";
+                    } else {
+                       signInForm.style.display = "none"
+                        new User(newUser)
+                    }
+                });
+        }
+        
+        if (document.cookie) {
+            signinBox.remove();
+            userEmail = document.cookie.split('=')[1];
+            login(userEmail);
+        } else {
+            signinBox.style.display = "block";
+        }
 
         createBtn.addEventListener('click', e => {
             e.preventDefault();
@@ -150,19 +175,6 @@
             
         });
         
-        const login = (email) => {
-            API.loginUser(email).then(
-                newUser => {
-                    if (newUser.error) {
-                        const error = document.getElementById('status')
-                        error.innerText = "Email not found."
-                        error.style.color = "Red";
-                    } else {
-                       signInForm.style.display = "none"
-                        new User(newUser)
-                    }
-                });
-        }
     </script>
 
     <!-- <script src="API.js"></script>
