@@ -30,6 +30,7 @@ class API {
 
     //CREATE USER
     static createUser(user) {
+        debugger
         return fetch(this.usersUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
