@@ -9,6 +9,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
 
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>
+    
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBieD-IfR1BuTcCE14XqtkY-N7aWUcBUW0",
+        authDomain: "friendface-be019.firebaseapp.com",
+        databaseURL: "https://friendface-be019.firebaseio.com",
+        projectId: "friendface-be019",
+        storageBucket: "friendface-be019.appspot.com",
+        messagingSenderId: "177686991419"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+    
     <script src="./API.js"></script>
 
     <script defer src="./timeline.js"></script>
@@ -81,7 +99,13 @@
                                 <div class="col-sm-12" style="margin-bottom: 1em;">
                                     <input type="text"  class="form-control" name="tagline" placeholder="Tagline">
                                 </div>
+                                <div class="image-upload">
+                                    <input id="file" type='file' onchange="readURL(this);" />
+                                    <img id="image-preview" src="http://placehold.it/180" alt="your image" />
+                                </div>
+                                <div id="preview">
 
+                                </div>
                                 <div class="col-sm-8 offset-sm-2">
                                     <input type="submit" name="submit" value="Sign In" class="btn  btn-outline-dark  btn-block">
                                 </div>
@@ -159,11 +183,28 @@
             const email = signupForm.email.value;
             const location = signupForm.location.value;
             const tagline = signupForm.tagline.value;
+            let image = ""
+            
+            const storageRef = firebase.storage().ref();
 
-            newUser = {f_name, l_name, email, location, tagline};
+            // Create a reference to 'images/mountains.jpg'
+            const profileImagesRef = storageRef.child(`profileImages/${email}.jpg`);
+            const imageInput = document.querySelector('#file')
+            const imageFile = imageInput.files[0]
 
-            API.createUser(newUser)
-                .then(user => login(user.email));
+            profileImagesRef.put(imageFile).then(function(snapshot) { 
+                snapshot.ref.getDownloadURL().then(url => {
+                    console.log(url)
+                    image = url
+                    newUser = {f_name, l_name, email, location, tagline, image};
+
+                    API.createUser(newUser)
+                        .then(user => login(user.email));
+
+                })
+            });
+
+           
 
         })
 
@@ -173,6 +214,25 @@
             login(emailAdd);
             
         });
+
+        function readURL(input) {
+            if (input.files && input.files[0])
+             {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    
+                    document.querySelector('#image-preview').src = e.target.result
+            
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+              
+
+            }
+        }
+            
         
     </script>
 
