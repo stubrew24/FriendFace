@@ -7,6 +7,7 @@ class User {
         this.tagline = user.tagline;
         this.location = user.location;
         this.email = user.email
+<<<<<<< HEAD
         this.fullName = this.f_name + " " + this.l_name 
 
 
@@ -14,6 +15,11 @@ class User {
      
         this.create()
      
+=======
+        this.fullName = this.f_name + " " + this.l_name
+        document.cookie = `userEmail=${this.email}`; 
+        this.create();
+>>>>>>> 1c2d5c5932ba94063adbf8446d464c9d9cd70a72
     }
 
     create() {
