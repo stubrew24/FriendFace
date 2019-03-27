@@ -9,6 +9,7 @@ class User {
         this.email = user.email
         this.fullName = this.f_name + " " + this.l_name
         document.cookie = `userEmail=${this.email}`; 
+        document.cookie = `userId=${this.id}`; 
         this.create();
     }
 
@@ -30,7 +31,11 @@ class User {
     </div>`
         sideBar.querySelector("#user-posts").addEventListener("click", () => this.showPosts())
         sideBar.querySelector("#sign-out").addEventListener("click", () => {
-            document.cookie += "; max-age=0"; location.reload();
+            let docCookie = document.cookie.split(';');
+            docCookie.forEach(cookie => {
+                document.cookie = cookie + "; max-age=0";
+            });
+            location.reload();
         });
     }
 

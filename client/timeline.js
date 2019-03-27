@@ -5,7 +5,8 @@ class TimeLine {
 
     static addPost(post) {
         const newPost = new Post(post)
-        this.el.appendChild(newPost.el)
+        this.el.prepend(newPost.el)
+        
     }
 
     static addPosts(posts) {

@@ -9,16 +9,18 @@ class PostForm {
     }
 
     static handleCreate(event) {
-        debugger
         event.preventDefault()
 
         const comment = this.el.comment.value
-        const userId = document.cookie()
+        const userId = document.cookie.split('=')[2];
 
         const post = { comment: comment, user_id: userId }
 
         API.createPost(post)
-            .then(newPost => TimeLine.addPost(newPost))
+            .then(newPost => {
+                TimeLine.addPost(newPost);
+                this.el.comment.value = "";
+            })
     }
 }
 
