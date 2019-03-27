@@ -3,7 +3,7 @@ class User {
         this.id = user.id
         this.f_name = user.f_name;
         this.l_name = user.l_name;
-        this.image = user.image;
+        this.image = user.image ? user.image : 'images/placeholder.jpg';
         this.tagline = user.tagline;
         this.location = user.location;
         this.email = user.email
@@ -22,12 +22,16 @@ class User {
             <p class="card-text" id="tagline">${this.tagline}.</p>
             <p class="card-text" id="location">${this.location}</p>
             
-            <div class="col text-center">
-                <a href="#" id="user-posts" class="btn btn-outline-dark"">View Posts</a>
+            <div class="row text-center">
+                <a href="#" id="user-posts" class="btn btn-outline-dark offset-sm-1 col-sm-5">My Posts</a>
+                <a href="#" id="sign-out" class="btn btn-outline-dark offset-sm-1 col-sm-4">Logout</a>
             </div>
         </div>
     </div>`
         sideBar.querySelector("#user-posts").addEventListener("click", () => this.showPosts())
+        sideBar.querySelector("#sign-out").addEventListener("click", () => {
+            document.cookie += "; max-age=0"; location.reload();
+        });
     }
 
     showPosts() {

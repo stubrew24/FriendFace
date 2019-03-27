@@ -4,6 +4,18 @@
 html, body {
     height: 100%;
     font-family: "Raleway", sans-serif;
+    background-color: rgb(17,23,29);
+    color: #fff;
+}
+
+a {
+    color: rgb(139,153,165)!important;
+}
+a:hover{
+    color: rgb(173,184,193)!important;
+}
+.card-body {
+    background-color:rgb(23,32,42);
 }
 h1,h2,h3{
     font-weight: 800;
@@ -13,21 +25,33 @@ h4, h5{
 }
 
 .bg-blue{
-    background-color: #ddd;
+    background-color: rgb(30,41,55);
 }
 
 .navbar-brand{
     font-weight: 800;
     font-size: 2em;
+    color: #fff!important;
 }
-
 
 nav{
     margin-bottom: 2em;
 }
 
-#profile{ 
+#profile, #signin, #signup { 
     position: -webkit-sticky;
     position: sticky;
     top: 2em;
+}
+
+input[type=text]{
+    background-color: #141d26!important
+}
+
+.card, .card-body, input, .btn{
+    border: 1px solid rgb(58,68,76);
+}
+
+.btn{
+    color: rgb(139,153,165)!important;
 }

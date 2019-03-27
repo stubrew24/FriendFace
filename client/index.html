@@ -35,24 +35,25 @@
                     <div class="card-body">
                         <h4 class="card-title text-center" id="name">Sign In</h4>
                         <form id="signinform">
-                                <div class="row form-group">
-                                    <div class="col-sm-12" style="margin-bottom: 1em;">
-                                        <input type="email"  class="form-control" name="email" placeholder="Email" required>
-                                        <span id="status"></span>
-                                    </div>
-                                    <div class="col-sm-12" style="margin-bottom: 1em;">
-                                        <input type="password"  class="form-control" name="password" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-8 offset-sm-2">
-                                        <input type="submit" name="submit" value="Sign In" class="btn btn-primary btn-block">
-                                    </div>
+                            <div class="row form-group">
+                                <div class="col-sm-12" style="margin-bottom: 1em;">
+                                    <input type="email"  class="form-control" name="email" placeholder="Email" required>
+                                    <span id="status"></span>
+                                </div>
+                                <div class="col-sm-12" style="margin-bottom: 1em;">
+                                    <input type="password"  class="form-control" name="password" placeholder="Password">
+                                </div>
+                                <div class="col-sm-8 offset-sm-2">
+                                    <input type="submit" name="submit" value="Sign In" class="btn  btn-outline-dark  btn-block">
                                 </div>
                             </div>
                         </form>
                         <div class="text-center">
                             <a href="#" id="createAccount">Create Account</a>
                         </div>
+                    
                     </div>
+                </div>
 
                 <div class="card" style="width: 255px; display:none;"  id="signup">
                     <div class="card-body">
@@ -82,7 +83,7 @@
                                 </div>
 
                                 <div class="col-sm-8 offset-sm-2">
-                                    <input type="submit" name="submit" value="Sign In" class="btn btn-primary btn-block">
+                                    <input type="submit" name="submit" value="Sign In" class="btn  btn-outline-dark  btn-block">
                                 </div>
 
                             </div>
@@ -102,7 +103,7 @@
                             </div>
 
                             <div class="col-sm-2">
-                                <button type="submit" class="btn btn-primary btn-block">Post</button>
+                                <button type="submit" class="btn  btn-outline-dark  btn-block">Post</button>
                             </div>
                         </div>
                     </form>
@@ -114,8 +115,6 @@
     </div>
 
     <script>
-
-
         const signinBox = document.getElementById('signin');
         const signInForm = document.getElementById('signinform');
 
@@ -176,14 +175,6 @@
         });
         
     </script>
-
-    <!-- <script src="API.js"></script>
-    <script src="timeline.js"></script>
-    <script src="post.js"></script>
-    <script src="postForm.js"></script>
-    <script src="User.js"></script>
-    <script src="UserForm.js"></script>
-    <script src="index.js"></script> -->
 
 </body>
 
