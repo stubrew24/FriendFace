@@ -30,7 +30,7 @@ class API {
 
     //CREATE USER
     static createUser(user) {
-        debugger
+        
         return fetch(this.usersUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -40,6 +40,7 @@ class API {
 
     //UPDATE USER
     //DELETE USER
+
 
     //GET SINGLE POST
     static getPost(post) {
@@ -63,6 +64,13 @@ class API {
 
     //UPDATE POST
     //DELETE POST
+
+    static deletePost(id){
+        return fetch(this.postsUrl + `/${id}`, {
+            method: "DELETE",
+            
+        }).then(resp => resp.json())
+    }
 }
 
 API.initialize()
