@@ -42,6 +42,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:comment, :like_count, :user_id)
+        params.permit(:comment, :like_count, :user_id, :image)
     end
 end

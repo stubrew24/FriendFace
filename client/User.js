@@ -1,5 +1,6 @@
 class User {
     constructor(user) {
+        this.otherPosts = [];
         this.id = user.id
         this.f_name = user.f_name;
         this.l_name = user.l_name;
@@ -8,6 +9,7 @@ class User {
         this.location = user.location;
         this.email = user.email
         this.fullName = this.f_name + " " + this.l_name
+        this.allPosts = Array.from(document.querySelectorAll(`div[data-user-id]`));
         document.cookie = `userEmail=${this.email}`; 
         document.cookie = `userId=${this.id}`; 
         this.create();
@@ -29,7 +31,25 @@ class User {
             </div>
         </div>
     </div>`
-        sideBar.querySelector("#user-posts").addEventListener("click", () => this.showPosts())
+        sideBar.querySelector("#user-posts").addEventListener("click", e => {
+            if (e.target.id !== "all-posts"){
+                const otherPosts = document.querySelectorAll(`div[data-user-id]:not([data-user-id="${this.id}"])`);
+                otherPosts.forEach(post => {
+                    post.remove();
+                });
+                e.target.innerText = "All Posts";
+                e.target.id = "all-posts";
+            } else {
+                e.target.innerText = "My Posts";
+                e.target.id = "user-posts";
+                const tl = document.querySelector("#timeline");
+                tl.innerHTML = "";
+                this.allPosts.forEach(post => {
+                    tl.append(post);
+                })
+            }
+        });
+        
         sideBar.querySelector("#sign-out").addEventListener("click", () => {
             let docCookie = document.cookie.split(';');
             docCookie.forEach(cookie => {
