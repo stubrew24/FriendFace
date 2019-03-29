@@ -126,15 +126,15 @@
             <div class="col-sm-9" id="main-content">
                 <div id="postform">
                     <form id="post-form">
-                        <div class="row form-group">
-                            <div class="col-sm-1">
+                        <div class="row form-group" id="postformbar">
+                            <div class="col-sm-1" id="imageselect">
                                 <label class="btn-upload">
-                                    <input id="file" name="file"type='file' onchange="UserForm.readURL(this);" />
+                                    <input id="file" name="file" type='file' onchange="PostForm.readURL(this);" />
                                     <button type="submit" class="btn btn-outline-dark upload-btn" style="width:2.6em;"></button>  
                                 </label>
                             </div>
         
-                            <div class="col-sm-9">
+                            <div class="col-sm-9" id="textbox">
                                 <textarea class="form-control" id="post-content" name="comment" placeholder="New Post"></textarea>
                             </div>
 

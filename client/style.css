@@ -84,6 +84,14 @@ input[type=text],input[type=email],input[type=password], textarea{
     border: 1px solid rgb(58,68,76);
 }
 
+#postimgprev{
+    margin-bottom: 1em;
+    width: 100%;
+    height: auto;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
 .upload-btn{
     background-image: url("images/baseline_add_photo_alternate_white_24dp.png"); 
     background-repeat: no-repeat; 

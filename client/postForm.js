@@ -38,6 +38,22 @@ class PostForm {
             this.el.comment.value = "";
         })
     }
+
+    static readURL(input) {
+        if (input.files && input.files[0])
+         {
+            var reader = new FileReader();
+            reader.onload = function (e) { 
+                document.getElementById('textbox').className = 'col-sm-7';
+                const imgbox = document.getElementById('imageselect');
+                imgbox.className = 'col-sm-3';
+                imgbox.innerHTML = '<img id="postimgprev" src="" />';
+                document.querySelector('#postimgprev').src = e.target.result; 
+                
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 }
 
 PostForm.init()
