@@ -34,7 +34,7 @@ class Post {
         let deleteBtn = document.createElement("button")
         this.el.appendChild(deleteBtn)
         deleteBtn.className = "delete-btn"
-        deleteBtn.innerText = "Remove"
+        deleteBtn.innerText = "X"
     }
 
     deleteButton(){

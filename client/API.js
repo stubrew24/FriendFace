@@ -61,7 +61,13 @@ class API {
     }
 
     //UPDATE POST
+    
     //DELETE POST
+    static deletePost(id){
+        return fetch(this.postsUrl + `/${id}`, {
+            method: "DELETE",
+        }).then(resp => resp.json())
+    }
 }
 
 API.initialize()
