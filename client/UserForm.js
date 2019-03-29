@@ -94,6 +94,7 @@ class UserForm {
 
     static signin(){
         this.signInForm.addEventListener('submit', e => {
+            debugger
             e.preventDefault();
             const emailAdd = this.signInForm.email.value;
             this.login(emailAdd);
