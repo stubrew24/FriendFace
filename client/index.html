@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
@@ -29,11 +30,12 @@
     
     <script src="./API.js"></script>
 
-    <script defer src="./timeline.js"></script>
-    <script defer src="./postForm.js"></script>
     <script defer src="./post.js"></script>
-    <script defer src="./User.js"></script>
+    <script defer src="./postForm.js"></script>
+    <script defer src="./timeline.js"></script>
     <script defer src="./index.js"></script>
+    <script defer src="./User.js"></script>
+    <script defer src="./UserForm.js"></script>
 
     <title>FriendFace</title>
 </head>
@@ -85,29 +87,32 @@
                                 </div>
 
                                 <div class="col-sm-12" style="margin-bottom: 1em;">
-                                    <input type="text"  class="form-control" name="f_name" placeholder="First name" required >
+                                    <input type="text"  class="form-control" name="f_name" placeholder="First name"  >
                                 </div>
 
                                 <div class="col-sm-12" style="margin-bottom: 1em;">
-                                    <input type="text"  class="form-control" name="l_name" placeholder="Last name"required >
+                                    <input type="text"  class="form-control" name="l_name" placeholder="Last name" >
                                 </div>
 
                                 <div class="col-sm-12" style="margin-bottom: 1em;">
-                                    <input type="text"  class="form-control" name="location" placeholder="Location" required >
+                                    <input type="text"  class="form-control" name="location" placeholder="Location"  >
                                 </div>
 
                                 <div class="col-sm-12" style="margin-bottom: 1em;">
                                     <input type="text"  class="form-control" name="tagline" placeholder="Tagline">
                                 </div>
-                                <div class="image-upload">
-                                    <input id="file" type='file' onchange="readURL(this);" />
-                                    <img id="image-preview" src="http://placehold.it/180" alt="your image" />
+                                <div class="image-upload col-sm-12 text-center">
+                                        <label class="btn-upload">
+                                            <input id="file" type='file'onchange="UserForm.readURL(this);" />
+                                            <button class="btn">Profile Picture</button>
+                                        </label>
+                                        <img id="image-preview" src="http://1x1px.me/FF4D00-0.png" alt="Profile Picture"/>
                                 </div>
                                 <div id="preview">
 
                                 </div>
                                 <div class="col-sm-8 offset-sm-2">
-                                    <input type="submit" name="submit" value="Sign In" class="btn  btn-outline-dark  btn-block">
+                                    <input type="submit" name="submit" value="Sign Up" class="btn  btn-outline-dark  btn-block">
                                 </div>
 
                             </div>
@@ -115,14 +120,22 @@
                     </div>
                 </div>
             </div>
+
                 
 
             <div class="col-sm-9" id="main-content">
                 <div id="postform">
                     <form id="post-form">
                         <div class="row form-group">
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="post-content" name="comment" placeholder="New Post">
+                            <div class="col-sm-1">
+                                <label class="btn-upload">
+                                    <input id="file" name="file"type='file' onchange="UserForm.readURL(this);" />
+                                    <button type="submit" class="btn btn-outline-dark upload-btn" style="width:2.6em;"></button>  
+                                </label>
+                            </div>
+        
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="post-content" name="comment" placeholder="New Post"></textarea>
                             </div>
 
                             <div class="col-sm-2">
@@ -138,100 +151,99 @@
     </div>
 
     <script>
-        const signinBox = document.getElementById('signin');
-        const signInForm = document.getElementById('signinform');
+        // const signinBox = document.getElementById('signin');
+        // const signInForm = document.getElementById('signinform');
 
-        const profile = document.getElementById('profile');
-        const createBtn = document.getElementById('createAccount');
+        // const profile = document.getElementById('profile');
+        // const createBtn = document.getElementById('createAccount');
 
-        const signupBox = document.getElementById('signup');
-        const signupForm = document.getElementById('signupform');
+        // const signupBox = document.getElementById('signup');
+        // const signupForm = document.getElementById('signupform');
         
-        const login = (email) => {
-            API.loginUser(email).then(
-                newUser => {
-                    if (newUser.error) {
-                        const error = document.getElementById('status')
-                        error.innerText = "Email not found."
-                        error.style.color = "Red";
-                    } else {
-                       signInForm.style.display = "none"
-                        new User(newUser)
-                    }
-                });
-        }
+        // const login = (email) => {
+        //     API.loginUser(email).then(
+        //         newUser => {
+        //             if (newUser.error) {
+        //                 const error = document.getElementById('status')
+        //                 error.innerText = "Email not found."
+        //                 error.style.color = "Red";
+        //             } else {
+        //                signInForm.style.display = "none"
+        //                 new User(newUser)
+        //             }
+        //         });
+        // }
         
-        if (document.cookie) {
-            signinBox.remove();
-            userEmail = document.cookie.split('=')[1].split(';')[0];
+        // if (document.cookie) {
+        //     signinBox.remove();
+        //     userEmail = document.cookie.split('=')[1].split(';')[0];
+        //     login(userEmail);
+        // } else {
+        //     signinBox.style.display = "block";
+        // }
 
-            login(userEmail);
-        } else {
-            signinBox.style.display = "block";
-        }
+        // createBtn.addEventListener('click', e => {
+        //     e.preventDefault();
+        //     signinBox.style.display = "none";
+        //     signupBox.style.display = "block";
+        // })
 
-        createBtn.addEventListener('click', e => {
-            e.preventDefault();
-            signinBox.style.display = "none";
-            signupBox.style.display = "block";
-        })
-
-        signupForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const f_name = signupForm.f_name.value;
-            const l_name = signupForm.l_name.value;
-            const email = signupForm.email.value;
-            const location = signupForm.location.value;
-            const tagline = signupForm.tagline.value;
-            let image = ""
+        // signupForm.addEventListener('submit', e => {
+        //     e.preventDefault();
+        //     const f_name = signupForm.f_name.value;
+        //     const l_name = signupForm.l_name.value;
+        //     const email = signupForm.email.value;
+        //     const location = signupForm.location.value;
+        //     const tagline = signupForm.tagline.value;
+        //     let image = ""
             
-            const storageRef = firebase.storage().ref();
+        //     const storageRef = firebase.storage().ref();
 
-            // Create a reference to 'images/mountains.jpg'
-            const profileImagesRef = storageRef.child(`profileImages/${email}.jpg`);
-            const imageInput = document.querySelector('#file')
-            const imageFile = imageInput.files[0]
+        //     // Create a reference to 'images/mountains.jpg'
+        //     const profileImagesRef = storageRef.child(`profileImages/${email}.jpg`);
+        //     const imageInput = document.querySelector('#file')
+        //     const imageFile = imageInput.files[0]
 
-            profileImagesRef.put(imageFile).then(function(snapshot) { 
-                snapshot.ref.getDownloadURL().then(url => {
-                    console.log(url)
-                    image = url
-                    newUser = {f_name, l_name, email, location, tagline, image};
+        //     profileImagesRef.put(imageFile).then(function(snapshot) { 
+        //         snapshot.ref.getDownloadURL().then(url => {
+        //             console.log(url)
+        //             image = url
+        //             newUser = {f_name, l_name, email, location, tagline, image};
 
-                    API.createUser(newUser)
-                        .then(user => login(user.email));
+        //             API.createUser(newUser)
+        //                 .then(user => login(user.email));
 
-                })
-            });
+        //         })
+        //     });
 
            
 
-        })
+        // })
 
-        signInForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const emailAdd = signInForm.email.value
-            login(emailAdd);
+        // signInForm.addEventListener('submit', e => {
+        //     e.preventDefault();
+        //     const emailAdd = signInForm.email.value
+        //     login(emailAdd);
             
-        });
+        // });
 
-        function readURL(input) {
-            if (input.files && input.files[0])
-             {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0])
+        //      {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
+        //         reader.onload = function (e) {
                     
-                    document.querySelector('#image-preview').src = e.target.result
+        //             document.querySelector('#image-preview').src = e.target.result
             
-                };
+        //         };
 
-                reader.readAsDataURL(input.files[0]);
+        //         reader.readAsDataURL(input.files[0]);
 
               
 
-            }
-        }
+        //     }
+        // }
             
         
     </script>

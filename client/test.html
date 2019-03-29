@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form id="imgupload">
+        <input type="file" id="imagefile" name="file" accept="image/*">
+        <input type="submit">
+    </form>
+    <span id="imgdisplay"></span>
+    <script>
+    (function() {
+        var HOST = "https://d13txem1unpe48.cloudfront.net/"
+      
+        document.getElementById('imgupload').addEventListener("submit", function(event) {
+            event.preventDefault();
+            if (document.getElementById('imagefile').files[0]) {
+                debugger
+                uploadFileAttachment(document.getElementById('imagefile').files[0])
+          }
+        })
+      
+        function uploadFileAttachment(attachment) {
+          uploadFile(attachment)
+      
+        //   function setAttributes(attributes) {
+        //     attachment.setAttributes(attributes)
+        //   }
+        }
+      
+        function uploadFile(file) {
+          var key = createStorageKey(file)
+          var formData = createFormData(key, file)
+          var xhr = new XMLHttpRequest()
+      
+          xhr.open("POST", HOST, true)
+      
+        //   xhr.upload.addEventListener("progress", function(event) {
+        //     var progress = event.loaded / event.total * 100
+        //     progressCallback(progress)
+        //   })
+      
+          xhr.addEventListener("load", function(event) {
+            if (xhr.status == 204) {
+              var attributes = {
+                url: HOST + key,
+                href: HOST + key + "?content-disposition=attachment"
+              }
+              document.getElementById('imagefile').value = "";
+              document.getElementById('imgdisplay').innerHTML = `<img src="${attributes.url}">`;
+              console.log(attributes)
+              //successCallback(attributes)
+            }
+          })
+      
+          xhr.send(formData)
+        }
+      
+        function createStorageKey(file) {
+          var date = new Date()
+          var day = date.toISOString().slice(0,10)
+          var name = date.getTime() + "-" + file.name
+          return [ "tmp", day, name ].join("/")
+        }
+      
+        function createFormData(key, file) {
+          var data = new FormData()
+          data.append("key", key)
+          data.append("file", file)
+          data.append("Content-Type", file.type)
+          return data
+        }
+      })();
+      </script>
+</body>
+</html>
