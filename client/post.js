@@ -20,9 +20,17 @@ class Post {
 
     addDeleteListener(){
         this.el.querySelector(".delete-btn").addEventListener("click", () => {
+
             this.el.remove()
             API.deletePost(this.postId)
         })
+    }
+
+    createDeleteBtn(){
+        let deleteBtn = document.createElement("button")
+        this.el.appendChild(deleteBtn)
+        deleteBtn.className = "delete-btn"
+        deleteBtn.innerText = "Remove"
     }
 
     create() {
@@ -30,13 +38,11 @@ class Post {
         <img src="${this.image}" height="50" class="profile-img"><br><br>
         <p class="card-text">${this.username}</p>
         <p class="card-text">${this.comment}</p>
-<<<<<<< HEAD
-        <p class="card-text"><small class="text-muted">Posted at ${this.created_at}</small></p>
-        <button class="delete-btn" type="button">Delete</button>`
-=======
         <p class="card-text"><img src="${this.postImage}"></p>
         <p class="card-text"><small class="text-muted">Posted at ${this.created_at}</small></p>`
+        if (document.cookie){
+            this.createDeleteBtn()
+        }
 
->>>>>>> e1eafe7b13dfdd8c2f9a44499b5926310559d7be
     }
 }
