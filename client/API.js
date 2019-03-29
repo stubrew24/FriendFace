@@ -2,6 +2,7 @@ class API {
 
     static initialize() {
         this.baseUrl = 'http://localhost:3000'
+        //this.baseUrl = 'https://ancient-depths-80715.herokuapp.com'
         this.usersUrl = this.baseUrl + '/users'
         this.postsUrl = this.baseUrl + '/posts'
 

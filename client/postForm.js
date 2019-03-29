@@ -13,7 +13,6 @@ class PostForm {
 
         const comment = this.el.comment.value;
         const userId = document.cookie.split('=')[2];
-
         if (this.el.file.files.length > 0) {
             const storageRef = firebase.storage().ref();
 
@@ -36,6 +35,8 @@ class PostForm {
             TimeLine.addPost(newPost);
             UserForm.currentUser.allPosts.unshift(new Post(newPost).el);
             this.el.comment.value = "";
+            document.querySelector('#postimgprev').style.display = "none";
+            document.querySelector('.btn-upload').style.display = "block";
         })
     }
 
@@ -44,16 +45,17 @@ class PostForm {
          {
             var reader = new FileReader();
             reader.onload = function (e) { 
-                document.getElementById('textbox').className = 'col-sm-7';
-                const imgbox = document.getElementById('imageselect');
-                imgbox.className = 'col-sm-3';
-                imgbox.innerHTML = '<img id="postimgprev" src="" />';
                 document.querySelector('#postimgprev').src = e.target.result; 
-                
+                document.querySelector('#postimgprev').style.display = "block";
+                document.querySelector('.btn-upload').style.display = "none";
+                document.getElementById('textbox').className = 'col-sm-7';
+                document.getElementById('imageselect').className = 'col-sm-3';
             };
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+
 }
 
 PostForm.init()

@@ -30,18 +30,12 @@ class Post {
         }
     }
 
-    createDeleteBtn(){
-        let deleteBtn = document.createElement("button")
-        this.el.appendChild(deleteBtn)
-        deleteBtn.className = "delete-btn"
-        deleteBtn.innerText = "X"
-    }
 
     deleteButton(){
         if (document.cookie){
             let userId = document.cookie.split('=')[2];
             if (this.user == userId){
-                this.createDeleteBtn();
+                this.el.querySelector('.text-muted').innerHTML += "<a href='#' class='delete-btn' style='margin-left:1em;'>Delete</a>";
             }
         }
     }
@@ -51,7 +45,11 @@ class Post {
         <img src="${this.image}" height="50" class="profile-img"><br><br>
         <p class="card-text">${this.username}</p>
         <p class="card-text">${this.comment}</p>
-        <p class="card-text"><small class="text-muted">Posted at ${this.created_at}</small></p>`
+        <p class="card-text">
+            <small class="text-muted">
+                Posted at ${this.created_at}
+            </small>
+        </p>`;
         this.deleteButton();
     }
 

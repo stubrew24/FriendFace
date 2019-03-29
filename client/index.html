@@ -31,10 +31,10 @@
     <script src="./API.js"></script>
 
     <script defer src="./post.js"></script>
-    <script defer src="./postForm.js"></script>
     <script defer src="./timeline.js"></script>
     <script defer src="./index.js"></script>
     <script defer src="./User.js"></script>
+    <script defer src="./postForm.js"></script>
     <script defer src="./UserForm.js"></script>
 
     <title>FriendFace</title>
@@ -132,6 +132,7 @@
                                     <input id="file" name="file" type='file' onchange="PostForm.readURL(this);" />
                                     <button type="submit" class="btn btn-outline-dark upload-btn" style="width:2.6em;"></button>  
                                 </label>
+                                <img id="postimgprev" src="" style="display=none;" />
                             </div>
         
                             <div class="col-sm-9" id="textbox">
