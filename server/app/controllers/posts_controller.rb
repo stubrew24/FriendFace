@@ -29,6 +29,16 @@ class PostsController < ApplicationController
         end
     end
 
+    def destroy
+        @post = Post.find_by(id: params[:id])
+        if @post 
+            @post.destroy
+            render json: {message: "You deleted me"}
+        else
+            render json: {error: "Post not Found!"}, status: 404
+        end
+    end
+
     private
 
     def post_params
