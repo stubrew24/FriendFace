@@ -11,8 +11,11 @@ class Post {
         this.el = document.createElement("div")
         this.el.className = "card-body list-group-item"
         this.el.dataset.userId = post.user.id
-
-        this.create()
+        if (this.postImage){   
+            this.createWithImage();
+        } else {
+            this.create();
+        }
     }
 
     create() {
@@ -20,8 +23,22 @@ class Post {
         <img src="${this.image}" height="50" class="profile-img"><br><br>
         <p class="card-text">${this.username}</p>
         <p class="card-text">${this.comment}</p>
-        <p class="card-text"><img src="${this.postImage}"></p>
         <p class="card-text"><small class="text-muted">Posted at ${this.created_at}</small></p>`
+    }
 
+    createWithImage(){
+        this.el.classList.add('mb-3');
+        this.el.innerHTML = `    
+            <div class="row no-gutters">
+                <div class="col-md-8">
+                    <img src="${this.image}" height="50" class="profile-img"><br><br>
+                    <p class="card-text">${this.username}</p>
+                    <p class="card-text">${this.comment}</p>
+                    <p class="card-text"><small class="text-muted">Posted at ${this.created_at}</small></p>
+                </div>
+                <div class="col-md-4">
+                    <img src="${this.postImage}" class="card-img" >
+                </div>
+            </div>`;
     }
 }

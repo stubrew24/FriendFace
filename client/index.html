@@ -144,109 +144,12 @@
                         </div>
                     </form>
                 </div>
-                <div class=" list-group" style="width: 100%;" id="timeline"></div>
+                <div class=" list-group" style="width: 100%;" id="timeline">
+                </div>
             </div>
 
         </div>
     </div>
-
-    <script>
-        // const signinBox = document.getElementById('signin');
-        // const signInForm = document.getElementById('signinform');
-
-        // const profile = document.getElementById('profile');
-        // const createBtn = document.getElementById('createAccount');
-
-        // const signupBox = document.getElementById('signup');
-        // const signupForm = document.getElementById('signupform');
-        
-        // const login = (email) => {
-        //     API.loginUser(email).then(
-        //         newUser => {
-        //             if (newUser.error) {
-        //                 const error = document.getElementById('status')
-        //                 error.innerText = "Email not found."
-        //                 error.style.color = "Red";
-        //             } else {
-        //                signInForm.style.display = "none"
-        //                 new User(newUser)
-        //             }
-        //         });
-        // }
-        
-        // if (document.cookie) {
-        //     signinBox.remove();
-        //     userEmail = document.cookie.split('=')[1].split(';')[0];
-        //     login(userEmail);
-        // } else {
-        //     signinBox.style.display = "block";
-        // }
-
-        // createBtn.addEventListener('click', e => {
-        //     e.preventDefault();
-        //     signinBox.style.display = "none";
-        //     signupBox.style.display = "block";
-        // })
-
-        // signupForm.addEventListener('submit', e => {
-        //     e.preventDefault();
-        //     const f_name = signupForm.f_name.value;
-        //     const l_name = signupForm.l_name.value;
-        //     const email = signupForm.email.value;
-        //     const location = signupForm.location.value;
-        //     const tagline = signupForm.tagline.value;
-        //     let image = ""
-            
-        //     const storageRef = firebase.storage().ref();
-
-        //     // Create a reference to 'images/mountains.jpg'
-        //     const profileImagesRef = storageRef.child(`profileImages/${email}.jpg`);
-        //     const imageInput = document.querySelector('#file')
-        //     const imageFile = imageInput.files[0]
-
-        //     profileImagesRef.put(imageFile).then(function(snapshot) { 
-        //         snapshot.ref.getDownloadURL().then(url => {
-        //             console.log(url)
-        //             image = url
-        //             newUser = {f_name, l_name, email, location, tagline, image};
-
-        //             API.createUser(newUser)
-        //                 .then(user => login(user.email));
-
-        //         })
-        //     });
-
-           
-
-        // })
-
-        // signInForm.addEventListener('submit', e => {
-        //     e.preventDefault();
-        //     const emailAdd = signInForm.email.value
-        //     login(emailAdd);
-            
-        // });
-
-        // function readURL(input) {
-        //     if (input.files && input.files[0])
-        //      {
-        //         var reader = new FileReader();
-
-        //         reader.onload = function (e) {
-                    
-        //             document.querySelector('#image-preview').src = e.target.result
-            
-        //         };
-
-        //         reader.readAsDataURL(input.files[0]);
-
-              
-
-        //     }
-        // }
-            
-        
-    </script>
 
 </body>
 
